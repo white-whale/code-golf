@@ -10,8 +10,8 @@ tests = [
         'tests': [
             { 'input': [], 'output': 0 },
             { 'input': [{ 'price': 100, 'quantity': 2 }, { 'price': -10, 'quantity': 5 }], 'output': 150 },
-            { 'input': [{ 'price': 0, 'quantity': 5 }, { 'price': 0.2, 'quantity': -2 }, { 'price': 0.3, 'quantity': 3 }], 'output': 0.5 },
-            { 'input': [{ 'price': x, 'quantity': -1 if x % 3 == 0 else 1 } for x in range(1, 100)], 'output': 98 * 16 },
+            { 'input': [{ 'price': 0, 'quantity': 5 }, { 'price': 0.5, 'quantity': -2 }, { 'price': 0.25, 'quantity': 3 }], 'output': -0.25 },
+            { 'input': [{ 'price': x, 'quantity': -1 if x % 3 == 0 else 1 } for x in range(1, 101)], 'output': 1684 },
         ]
     },
     {
@@ -21,7 +21,7 @@ tests = [
             { 'input': '', 'output': '' },
             { 'input': 'clclclclclclclclclclclclclc', 'output': 'ClClClClClClClClClClClClClC' },
             { 'input': ' test input #three.', 'output': ' tEsT InPuT #tHrEe.' },
-            { 'input': 'test input %%%%%%%%four.', 'output': 'TeSt iNpUt %%%%%%%FoUr.' },
+            { 'input': 'test input %%%%%%%four.', 'output': 'TeSt iNpUt %%%%%%%FoUr.' },
         ]
     },
     {
@@ -69,7 +69,7 @@ for suite in tests:
             print(suite['name'], 'failed with input', test['input'], '\n  Expected:', test['output'], 'received:', output);
 
 def score(func):
-    lines = inspect.getsource(submissions.question5).split('\n')
+    lines = inspect.getsource(func).split('\n')
     lines.pop(); # remove the first line `function question(input):`
     return math.fsum([len(x.strip()) for x in lines]) - 7 # strip each line and subtract 7 (the number of characters in `return `)
 
@@ -79,4 +79,4 @@ else:
     print('All tests passed!')
     for suite in tests:
         print(suite['name'], 'score:', score(suite['function']))
-    print('Total score:', math.fsum([score(suite.function) for suite in tests]))
+    print('Total score:', math.fsum([score(suite['function']) for suite in tests]))

@@ -7,9 +7,9 @@ const tests = [
         function: submissions.question1,
         tests: [
             { input: [], output: 0 },
-            { input: [{ price: 100, quantity: 2 }, { price: -10, quantity: 5 }], output: 290 },
-            { input: [{ price: 0, quantity: 5 }, { price: 0.2, quantity: -2 }, { price: 0.3, quantity: 3 }], output: 0.5 },
-            { input: Array.from({ length: 100 }, (_, x) => ({ price: x + 1, quantity: (x + 1) % 3 === 0 ? -1 : 1 })), output: 98 * 16 },
+            { input: [{ price: 100, quantity: 2 }, { price: -10, quantity: 5 }], output: 150 },
+            { input: [{ price: 0, quantity: 5 }, { price: 0.5, quantity: -2 }, { price: 0.25, quantity: 3 }], output: -0.25 },
+            { input: Array.from({ length: 100 }, (_, x) => ({ price: x + 1, quantity: (x + 1) % 3 === 0 ? -1 : 1 })), output: 1684 },
         ]
     },
     {
@@ -17,9 +17,9 @@ const tests = [
         function: submissions.question2,
         tests: [
             { input: '', output: '' },
-            { input: 'clclclclclclclclclclclclclc', output: 'CLCLCLCLCLCLCLCLCLCLCLCLCLC' },
+            { input: 'clclclclclclclclclclclclclc', output: 'ClClClClClClClClClClClClClC' },
             { input: ' test input #three.', output: ' tEsT InPuT #tHrEe.' },
-            { input: 'test input %%%%%%%%four.', output: 'TeSt iNpUt %%%%%%%FoUr.' },
+            { input: 'test input %%%%%%%four.', output: 'TeSt iNpUt %%%%%%%FoUr.' },
         ]
     },
     {
@@ -48,7 +48,7 @@ const tests = [
     {
         name: 'Question 5',
         function: submissions.question5,
-        comarison: (expected, received) => {
+        comparison: (expected, received) => {
             if (received.length !== expected?.length) return false;
             return expected.every((val, i) => val === received[i]);
         },
