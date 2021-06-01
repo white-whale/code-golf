@@ -74,7 +74,7 @@ for suite in tests:
 
 def score(func):
     lines = inspect.getsource(func).split('\n')
-    lines.pop() # remove the first line `function question(input):`
+    lines.pop(0) # remove the first line `function question(input):`
     return int(math.fsum([len(x.strip()) for x in lines]) - 7) # strip each line and subtract 7 (the number of characters in `return `)
 
 if numErrors > 0:
