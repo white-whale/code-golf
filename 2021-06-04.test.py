@@ -43,6 +43,8 @@ tests = [
         'function': submissions.question4,
         'tests': [
             { 'input': 0, 'output': '' },
+            { 'input': 1, 'output': '1' },
+            { 'input': 2, 'output': '1 1' },
             { 'input': 10, 'output': '1 1 2 3 5 8 13 21 34 55' },
             { 'input': 40, 'output': '1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987 1597 2584 4181 6765 10946 17711 28657 46368 75025 121393 196418 317811 514229 832040 1346269 2178309 3524578 5702887 9227465 14930352 24157817 39088169 63245986 102334155' },
         ]
@@ -57,6 +59,7 @@ tests = [
             { 'input': ['North', 'North', 'East', 'South', 'West', 'South', 'North', 'East', 'East', 'West', 'North', 'West', 'East', 'West', 'South', 'West', 'North'], 'output': ['North', 'West', 'North'] },
             { 'input': ['North', 'West', 'North', 'West', 'North', 'East', 'North', 'East', 'South', 'East', 'South', 'East'], 'output': ['North', 'West', 'North', 'West', 'North', 'East', 'North', 'East', 'South', 'East', 'South', 'East'] },
             { 'input': ['North', 'West', 'North', 'West', 'North', 'East', 'North', 'East', 'South', 'North', 'East', 'South', 'East'], 'output': ['North', 'West', 'North', 'West', 'North', 'East', 'North', 'East', 'East', 'South', 'East'] },
+            { 'input': ['North', 'West', 'East', 'East', 'East', 'West', 'North', 'South', 'West', 'West', 'East', 'East', 'West', 'South'], 'output': [] },
         ]
     },
 ]
