@@ -78,8 +78,8 @@ tests.forEach((suite) => suite.tests.forEach((test) => {
 
 function score(func) {
     const lines = func.toString().split('\n');
-    lines.pop(); // remove the first line `function question(input) {`
-    lines.shift(); // remove the last line `}`
+    lines.shift(); // remove the first line `function question(input) {`
+    lines.pop(); // remove the last line `}`
     return lines
         .map((line) => line.trim().length) // get the number of characters in each line minus white space
         .reduce((a, b) => a + b) - 7; // add all the lines together, ignore the `return ` (7 characters)
