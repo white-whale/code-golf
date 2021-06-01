@@ -67,6 +67,7 @@ tests.forEach((suite) => suite.tests.forEach((test) => {
     const output = suite.function(test.input);
     const comparison = suite.comparison || ((a, b) => a === b);
     if (!comparison(output, test.output)) {
+      suite.error = true;
       numErrors += 1;
       console.log(suite.name, 'failed with input', test.input, '\n  Expected:', test.output, 'received:', output);
     }
@@ -82,9 +83,12 @@ function score(func) {
 }
 
 if (numErrors > 0) {
-    console.error('\nTest suite failed');
+    console.error('\nTest suite failed\n');
 } else {
-    console.log('All tests passed!')
-    tests.forEach((suite) => console.log(suite.name, 'score:', score(suite.function)));
-    console.log('Total score:', tests.reduce((acc, cur) => acc + score(cur.function), 0))
+    console.log('All tests passed!\n')
 }
+
+tests.forEach((suite) => {
+    console.log(suite.name, 'score:', suite.error ? 'N/A' : score(suite.function));
+});
+console.log('Total score:', tests.reduce((acc, suite) => acc + (suite.error ? 0 : score(suite.function)), 0))

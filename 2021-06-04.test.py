@@ -59,24 +59,26 @@ tests = [
             { 'input': ['North', 'West', 'North', 'West', 'North', 'East', 'North', 'East', 'South', 'North', 'East', 'South', 'East'], 'output': ['North', 'West', 'North', 'West', 'North', 'East', 'North', 'East', 'East', 'South', 'East'] },
         ]
     },
-];
+]
 
 for suite in tests:
     for test in suite['tests']:
-        output = suite['function'](test['input']);
+        output = suite['function'](test['input'])
         if output != test['output']:
-            numErrors += 1;
-            print(suite['name'], 'failed with input', test['input'], '\n  Expected:', test['output'], 'received:', output);
+            numErrors += 1
+            suite['error'] = True
+            print(suite['name'], 'failed with input', test['input'], '\n  Expected:', test['output'], 'received:', output)
 
 def score(func):
     lines = inspect.getsource(func).split('\n')
-    lines.pop(); # remove the first line `function question(input):`
-    return math.fsum([len(x.strip()) for x in lines]) - 7 # strip each line and subtract 7 (the number of characters in `return `)
+    lines.pop() # remove the first line `function question(input):`
+    return int(math.fsum([len(x.strip()) for x in lines]) - 7) # strip each line and subtract 7 (the number of characters in `return `)
 
 if numErrors > 0:
-    print('\nTest suite failed');
+    print('\nTest suite failed\n')
 else:
-    print('All tests passed!')
-    for suite in tests:
-        print(suite['name'], 'score:', score(suite['function']))
-    print('Total score:', math.fsum([score(suite['function']) for suite in tests]))
+    print('All tests passed!\n')
+
+for suite in tests:
+    print(suite['name'], 'score:', 'N/A' if 'error' in suite else score(suite['function']))
+print('Total score:', int(math.fsum([0 if 'error' in suite else score(suite['function']) for suite in tests])))
