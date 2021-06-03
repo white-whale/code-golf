@@ -26,20 +26,6 @@ const tests = [
         name: 'Question 3',
         function: submissions.question3,
         tests: [
-            { input: '', output: undefined },
-            { input: 14, output: '' },
-            { input: Math, output: 14 },
-            { input: null, output: Math },
-            { input: 13, output: null },
-            { input: undefined, output: 13 },
-            { input: 'something', output: undefined },
-            { input: 0, output: 'something' },
-        ]
-    },
-    {
-        name: 'Question 4',
-        function: submissions.question4,
-        tests: [
             { input: 0, output: '' },
             { input: 1, output: '1' },
             { input: 2, output: '1 1' },
@@ -48,8 +34,8 @@ const tests = [
         ]
     },
     {
-        name: 'Question 5',
-        function: submissions.question5,
+        name: 'Question 4',
+        function: submissions.question4,
         comparison: (expected, received) => {
             if (received.length !== expected?.length) return false;
             return expected.every((val, i) => val === received[i]);
@@ -62,6 +48,15 @@ const tests = [
             { input: ['North', 'West', 'North', 'West', 'North', 'East', 'North', 'East', 'South', 'East', 'South', 'East'], output: ['North', 'West', 'North', 'West', 'North', 'East', 'North', 'East', 'South', 'East', 'South', 'East'] },
             { input: ['North', 'West', 'North', 'West', 'North', 'East', 'North', 'East', 'South', 'North', 'East', 'South', 'East'], output: ['North', 'West', 'North', 'West', 'North', 'East', 'North', 'East', 'East', 'South', 'East'] },
             { input: ['North', 'West', 'East', 'East', 'East', 'West', 'North', 'South', 'West', 'West', 'East', 'East', 'West', 'South'], output: [] },
+        ]
+    },
+    {
+        name: 'Question 5',
+        function: submissions.question5,
+        tests: [
+            { input: [2, 6, 8], output: '    #\n    #\n  # #\n  # #\n  # #\n  # #\n# # #\n# # #\n-----\n1 2 3\n' }
+            { input: [9, 0, 0, 0, 5, 8, 1], output: '#\n#         #\n#         #\n#       # #\n#       # #\n#       # #\n#       # #\n#       # # #\n-------------\n1 2 3 4 5 6 7\n' }
+            { input: [0, 5, 2, 2, 7], output: '        #\n        #\n  #     #\n  #     #\n  #     #\n  # # # #\n  # # # #\n---------\n1 2 3 4 5\n' }
         ]
     },
 ];

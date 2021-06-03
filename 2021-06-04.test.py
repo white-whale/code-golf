@@ -6,7 +6,7 @@ numErrors = 0
 tests = [
     {
         'name': 'Question 1',
-        'function': submissions.question1,
+        'function': submissions.question_1,
         'tests': [
             { 'input': [], 'output': 0 },
             { 'input': [{ 'price': 100, 'quantity': 2 }, { 'price': -10, 'quantity': 5 }], 'output': 150 },
@@ -16,7 +16,7 @@ tests = [
     },
     {
         'name': 'Question 2',
-        'function': submissions.question2,
+        'function': submissions.question_2,
         'tests': [
             { 'input': '', 'output': '' },
             { 'input': 'clclclclclclclclclclclclclc', 'output': 'ClClClClClClClClClClClClClC' },
@@ -26,21 +26,7 @@ tests = [
     },
     {
         'name': 'Question 3',
-        'function': submissions.question3,
-        'tests': [
-            { 'input': '', 'output': None },
-            { 'input': 14, 'output': '' },
-            { 'input': [1, 2, 3, 4], 'output': 14 },
-            { 'input': None, 'output': [1, 2, 3, 4] },
-            { 'input': 13, 'output': None },
-            { 'input': True, 'output': 13 },
-            { 'input': 'something', 'output': True },
-            { 'input': 0, 'output': 'something' },
-        ]
-    },
-    {
-        'name': 'Question 4',
-        'function': submissions.question4,
+        'function': submissions.question_3,
         'tests': [
             { 'input': 0, 'output': '' },
             { 'input': 1, 'output': '1' },
@@ -50,8 +36,8 @@ tests = [
         ]
     },
     {
-        'name': 'Question 5',
-        'function': submissions.question5,
+        'name': 'Question 4',
+        'function': submissions.question_4,
         'tests': [
             { 'input': [], 'output': [] },
             { 'input': ['North', 'East', 'South', 'West', 'East'], 'output': ['North', 'East', 'South'] },
@@ -60,6 +46,15 @@ tests = [
             { 'input': ['North', 'West', 'North', 'West', 'North', 'East', 'North', 'East', 'South', 'East', 'South', 'East'], 'output': ['North', 'West', 'North', 'West', 'North', 'East', 'North', 'East', 'South', 'East', 'South', 'East'] },
             { 'input': ['North', 'West', 'North', 'West', 'North', 'East', 'North', 'East', 'South', 'North', 'East', 'South', 'East'], 'output': ['North', 'West', 'North', 'West', 'North', 'East', 'North', 'East', 'East', 'South', 'East'] },
             { 'input': ['North', 'West', 'East', 'East', 'East', 'West', 'North', 'South', 'West', 'West', 'East', 'East', 'West', 'South'], 'output': [] },
+        ]
+    },
+    {
+        'name': 'Question 5',
+        'function': submissions.question_5,
+        'tests': [
+            { 'input': [2, 6, 8], 'output': '    #\n    #\n  # #\n  # #\n  # #\n  # #\n# # #\n# # #\n-----\n1 2 3\n' }
+            { 'input': [9, 0, 0, 0, 5, 8, 1], 'output': '#\n#         #\n#         #\n#       # #\n#       # #\n#       # #\n#       # #\n#       # # #\n-------------\n1 2 3 4 5 6 7\n' }
+            { 'input': [0, 5, 2, 2, 7], 'output': '        #\n        #\n  #     #\n  #     #\n  #     #\n  # # # #\n  # # # #\n---------\n1 2 3 4 5\n' }
         ]
     },
 ]

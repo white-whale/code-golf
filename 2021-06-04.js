@@ -7,8 +7,9 @@
 */
 
 function question1(array) {
-    return ;
+    return
 }
+
 
 /*
   Q2.  Capitalize every other character of a string, starting with a capital letter.
@@ -18,48 +19,65 @@ function question1(array) {
 */
 
 function question2(string) {
-    return ;
+    return
 }
 
-/*
-  Q3.  Return the value of the previous input to this function.
-  eg.
-       question3('one') // expected output: undefined
-       question3(2) // expected output: 'one'
-       question3() // expected output: 2
-       question3({}) // expected output: undefined
-*/
-
-function question3(input) {
-    return ;
-}
 
 /*
-  Q4.  Return the first n fibonacci numbers in a string separated by spaces.
+  Q3.  Return the first n fibonacci numbers in a string separated by spaces.
   eg.
-       question4(10)
-       // expected output: '1 1 2 3 5 8 13 21 34 55'
+       question3(7)
+       // expected output: '1 1 2 3 5 8 13'
 
 */
 
-function question4(n) {
-    return ;
+function question3(n) {
+    return
 }
 
+
 /*
-  Q5.  Simplify the directions.  Given an array of cardinal directions ('North', 'South', 'East', 'West'),
-       your task is to remove all instances where North and South or East and West appear immediately side by side.
+  Q4.  Simplify the directions.  Given an array of cardinal directions ('North', 'South', 'East', 'West'),
+       your task is to recursively remove all instances where North and South or East and West appear side by side.
   eg.
-       question5(['North', 'East', 'South', 'West', 'East'])
+       question4(['North', 'East', 'South', 'West', 'East'])
        // expected output: ['North', 'East', 'South']
-       question5('North', 'South', 'South', 'East', 'West', 'North', 'West'])
+       question4('North', 'South', 'South', 'East', 'West', 'North', 'West'])
        // expected output: ['West']
 
 */
 
-function question5(directions) {
-    return ;
+function question4(directions) {
+    return
 }
+
+
+/*
+  Q5.  Make a histogram.  You will be given an array of values to make into a historgam as in the example below.
+       There should be no trailing spaces at the end of a line, and each line including the last should end in a
+       line break.
+  eg.
+       question5([7, 3, 10, 1, 0, 5])
+       expected output:
+    #
+    #
+    #
+#   #
+#   #
+#   #     #
+#   #     #
+# # #     #
+# # #     #
+# # # #   #
+-----------
+1 2 3 4 5 6
+*/
+
+function question5(values) {
+    return
+}
+
+
 
 // export questions for use in `2021-06-04.test.js`
 module.exports = {
