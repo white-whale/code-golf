@@ -47,7 +47,7 @@ def question_4(directions):
 
 
 '''
-  Q5.  Make a histogram.  You will be given an array of values to make into a historgam as in the example below.
+  Q5.  Make a histogram.  You will be given a list of values to make into a historgam as in the example below.
        There should be no trailing spaces at the end of a line, and each line including the last should end in a
        line break.
   eg.
