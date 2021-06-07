@@ -22,6 +22,7 @@ tests = [
             { 'input': 'clclclclclclclclclclclclclc', 'output': 'ClClClClClClClClClClClClClC' },
             { 'input': ' test input #three.', 'output': ' tEsT InPuT #tHrEe.' },
             { 'input': 'test input %%%%%%%four.', 'output': 'TeSt iNpUt %%%%%%%FoUr.' },
+            { 'input': 'LOWERCASE', 'output': 'LoWeRcAsE' },
         ]
     },
     {
