@@ -16,10 +16,12 @@ tests.forEach((suite, i) => {
 
         const input = test.input;
         const expected = test.output;
+        console.log({...test})
         const inputDisplay = JSON.stringify(test.input);
         let output;
         try {
             output = submissions[i](input);
+            console.log('my output:', output)
         } catch (err) {
             failed = true;
             console.log('  Test failed with input', inputDisplay);
