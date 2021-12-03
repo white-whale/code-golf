@@ -1,6 +1,6 @@
 import inspect
 import math
-submissions = __import__('2021-06-04')
+submissions = __import__('problems')
 numErrors = 0
 
 tests = [

@@ -79,7 +79,7 @@ function question5(values) {
 
 
 
-// export questions for use in `2021-06-04.test.js`
+// export questions for use in `test.js`
 module.exports = {
     question1: question1,
     question2: question2,
