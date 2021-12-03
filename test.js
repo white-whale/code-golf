@@ -1,9 +1,9 @@
 const fs = require('fs');
-const submissions = require('./problems.js');
+const submissions = require('./problem.js');
 
 const tests = [
     {
-        name: 'Nested Elements',
+        name: 'Test',
         function: submissions.average,
         tests: [
             { input: [1, 2, 3, 4, 5], output: 3 },
@@ -24,7 +24,7 @@ tests.forEach((suite) => suite.tests.forEach((test) => {
     if (output !== test.output) {
       numErrors += 1;
       suite.error = true;
-      console.log(suite.name, 'failed with input', test.input, '\n  Expected:', test.output, 'received:', output);
+      console.log(suite.name, 'failed with input', JSON.stringify(test.input), '\n  Expected:', test.output, 'received:', output, '\n');
     }
 }));
 
@@ -40,5 +40,5 @@ if (numErrors === 0) {
 }
 
 tests.forEach((suite) => {
-    console.log(suite.name, 'score:', score(suite.function));
+    console.log(suite.name, 'number of characters used:', score(suite.function));
 });
