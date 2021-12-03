@@ -11,14 +11,21 @@
 */
 
 function average(a) {
-    s = c = 0;
-    b = a.flat(999);
-    for (i in b) {
-        s += b[i];
-        c++;
-    }
-    return s / c || 0;
+  
+  b=a.flat(999), n=0, t=0
+
+  for (i in b) {
+        t += b[i]
+        n ++
+  }
+
+  return t/n || 0
 }
+
+
+
 
 // export questions for use in `test.js`
 module.exports = { average: average };
+
+console.log(1+1);
