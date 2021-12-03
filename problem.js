@@ -12,11 +12,13 @@
 
 function average(a) {
   
-  b=a.flat(999), n=0, t=0
+  b=a.flat(999)
+  n=0 
+  t=0
 
   for (i in b) {
-        t += b[i]
-        n ++
+    t += b[i]
+    n ++
   }
 
   return t/n || 0
