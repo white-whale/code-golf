@@ -1,4 +1,4 @@
-const submissions = require('./2021-06-04');
+const submissions = require('./problems');
 let numErrors = 0;
 
 const tests = [
