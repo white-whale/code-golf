@@ -1,32 +1,10 @@
 import inspect
-import math
-submissions = __import__('problem')
+import json
+import traceback
 
-tests = [
-    {
-        'name': 'Nested Elements',
-        'function': submissions.average,
-        'tests': [
-            { 'input': [1, 2, 3, 4, 5], 'output': 3 },
-            { 'input': [[1], [[]], [3], 5, [[[7]], 9, [11]]], 'output': 6 },
-            { 'input': [-2.25, [], [0], [4.5, [9.5], [[-10.25]]]], 'output': 0.3 },
-            { 'input': [2.25, [], [0], [-4.5, [-9.5], [[10.25]]]], 'output': -0.3 },
-            { 'input': [[],0,[[],[0,0,[],[[0],[]]],[]],[],0], 'output': 0 },
-            { 'input': [], 'output': 0 },
-            { 'input': [[[[[[[[[[[[[[[[[[[[[[[[]]]]]],[]]]]]],[]]]]],[]]]]]]]]]], 'output': 0 },
-            { 'input': [[[[[[[9,[[[[[[[[[[[[[[[[]]]]]],[]]]]]],[]]]]],[]]]]]]]]], 'output': 9 },
-        ]
-    },
-]
-
-numErrors = 0
-for suite in tests:
-    for test in suite['tests']:
-        output = suite['function'](test['input'])
-        if output != test['output']:
-            numErrors += 1
-            suite['error'] = True
-            print(suite['name'], 'failed with input', test['input'], '\n  Expected:', test['output'], 'received:', output, '\n')
+f = open('test.json')
+tests = json.load(f)
+f.close()
 
 def score(func):
     lines = inspect.getsource(func).split('\n')
@@ -34,8 +12,40 @@ def score(func):
     chars = ''.join(''.join(lines).split());
     return len(chars);
 
-if numErrors == 0:
-    print('All tests passed!\n')
+def test(func, **kwargs):
+    suite = None
+    if func.__name__ == 'average':
+        suite = tests[0]
 
-for suite in tests:
-    print(suite['name'], 'number of characters used:', score(suite['function']))
+    if not suite:
+        print('Test suite not found')
+        print('Score:', score(func))
+        return
+
+    print(suite['name'])
+    failed = False
+    for test in suite['tests']:
+        if (failed):
+            continue
+
+        input = test['input']
+        inputDisplay = str(input)
+        expected = test['output']
+        output = None
+
+        try:
+            output = func(test['input'])
+        except Exception as e:
+            print('  Test failed with input', inputDisplay)
+            print('    Received an error:\n')
+            traceback.print_exc()
+            failed = True
+        else:
+            if output != test['output']:
+                print('  Test failed with input', inputDisplay)
+                print('    Expected:', expected)
+                print('    Received:', output)
+                failed = True
+    if not failed:
+        print('  All tests passed!')
+    print('\n  Score:', score(func))

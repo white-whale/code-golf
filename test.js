@@ -1,44 +1,53 @@
 const fs = require('fs');
-const submissions = require('./problem.js');
+const { average } = require('./problem.js');
 
-const tests = [
-    {
-        name: 'Test',
-        function: submissions.average,
-        tests: [
-            { input: [1, 2, 3, 4, 5], output: 3 },
-            { input: [[1], [[]], [3], 5, [[[7]], 9, [11]]], output: 6 },
-            { input: [-2.25, [], [0], [4.5, [9.5], [[-10.25]]]], output: 0.3 },
-            { input: [2.25, [], [0], [-4.5, [-9.5], [[10.25]]]], output: -0.3 },
-            { input: [[],0,[[],[0,0,[],[[0],[]]],[]],[],0], output: 0 },
-            { input: [], output: 0 },
-            { input: [[[[[[[[[[[[[[[[[[[[[[[[]]]]]],[]]]]]],[]]]]],[]]]]]]]]]], output: 0 },
-            { input: [[[[[[[9,[[[[[[[[[[[[[[[[]]]]]],[]]]]]],[]]]]],[]]]]]]]]], output: 9 },
-        ]
-    },
-];
+const submissions = [average];
+const tests = JSON.parse(fs.readFileSync('./test.json'));
 
-let numErrors = 0;
-tests.forEach((suite) => suite.tests.forEach((test) => {
-    const output = suite.function(test.input);
-    if (output !== test.output) {
-      numErrors += 1;
-      suite.error = true;
-      console.log(suite.name, 'failed with input', JSON.stringify(test.input), '\n  Expected:', test.output, 'received:', output, '\n');
+
+// Run the tests and output to the console
+tests.forEach((suite, i) => {
+    if (i > 0) console.log('\n');
+    console.log(suite.name);
+
+    let failed = false;
+    suite.tests.forEach((test) => {
+        if (failed) return;
+
+        const input = test.input;
+        const expected = test.output;
+        const inputDisplay = JSON.stringify(test.input);
+        let output;
+        try {
+            output = submissions[i](input);
+        } catch (err) {
+            failed = true;
+            console.log('  Test failed with input', inputDisplay);
+            console.log('    Received an error:\n');
+            console.error(err);
+            return;
+        }
+
+        if (output !== expected) {
+            failed = true;
+            console.log('  Test failed with input', inputDisplay);
+            console.log('    Expected:', expected);
+            console.log('    Received:', output);
+        }
+    })
+    if (!failed) {
+        console.log('  All tests passed!');
     }
-}));
+    console.log('\n  Score:', score(submissions[i]), '');
+});
+
+
+/*---- Helper functions ----*/
 
 function score(func) {
+    // "score" a function: the number of non-whitespace characters, excluding boilerplate
     const lines = func.toString().split('\n');
     lines.shift(); // remove the first line `function question(input) {`
     lines.pop(); // remove the last line `}`
     return lines.join('').replace(/\s/g,'').length
 }
-
-if (numErrors === 0) {
-    console.log('All tests passed!\n')
-}
-
-tests.forEach((suite) => {
-    console.log(suite.name, 'number of characters used:', score(suite.function));
-});

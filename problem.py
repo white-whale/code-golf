@@ -1,3 +1,5 @@
+import test
+
 '''
   Problem: Nested Elements
   Find the average (mean) of all the numbers in a list, no matter how deeply nested.
@@ -11,3 +13,8 @@
 '''
 
 def average(a):
+
+
+
+
+test.test(average)
