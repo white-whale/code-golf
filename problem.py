@@ -6,10 +6,10 @@ import test
 
   eg.
        average([1, [2, []], [[3, [4]]]])
-       // expected output: 2.5
+       # expected output: 2.5
 
-  You may assume that all elements are either lists or numbers,
-  and that lists are nested no more than 1000 layers deep.
+  You may assume that all elements are either lists or numbers
+  and that lists are nested less than 1000 layers deep.
 '''
 
 def average(a):
