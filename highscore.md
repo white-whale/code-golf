@@ -47,8 +47,8 @@ Notes:
   - Recursive solutions are possible, but the shortest solution (Pete) found extended
     the given array by any sub-arrays found while looping through the array
   - Recording the sum (s) and number (n) or elements was shorter than trying to create
-    a flattened array
-  - You can check that a variable is an array with `if type(a) is list:`
+    a flattened array and use `sum(a) / len(a)`
+  - You can check that a variable is an array with `if type(x) is list:`
     it was shorter to use a try/except instead of explicit type checking
   - division by 0 can be avoided by `n and s / n`
   - `a = a[*a, *x]` was shorter than `a.extend(x)`
