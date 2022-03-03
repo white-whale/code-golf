@@ -90,8 +90,20 @@ function makeBins(targets, play) {
     return bins;
 }
 
+function getTargets() {
+    let targets = wordleTargets;
+    for (let i = 0; i < arguments.length; i += 2) {
+        const bins = makeBins(targets, arguments[i]);
+        targets = bins[arguments[i + 1]];
+    }
+    return targets;
+}
+
+// console.log(getTargets('ROUND', '10000', 'TABLE', '01002'))
+
 module.exports = {
     compare,
     gradeWordleAlgorithm,
     makeBins,
+    getTargets,
 }

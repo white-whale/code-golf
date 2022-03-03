@@ -85,3 +85,14 @@ def makeBins(targets, play):
         else:
             bins[colour].append(word)
     return bins
+
+
+def getTargets(*arguments):
+    targets = wordle_targets
+    for i, x in enumerate(arguments):
+        if i % 2 == 0:
+            bins = makeBins(targets, arguments[i])
+            targets = bins[arguments[i + 1]]
+    return targets
+
+# print(getTargets('ROUND', '10000', 'TABLE', '01002'))
